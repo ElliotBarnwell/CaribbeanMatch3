@@ -847,14 +847,44 @@ namespace Match3
                             m_EmptyCells.Add(gemIdx);
                         }
 
-                        //
                         if (gem.CurrentState != Gem.State.Disappearing)
                         {
                             LevelData.Instance.Matched(gem);
-                            
+
+                            if (gem.MatchEffectPrefabs != null && gem.MatchEffectPrefabs.Length > 0)
+                            {
+                                Debug.Log($"Gem: {gem.name}, Array type: {gem.MatchEffectPrefabs.GetType()}, First element type: {gem.MatchEffectPrefabs[0]?.GetType().Name ?? "null"}");
+                            }
                             foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
                             {
-                                GameManager.Instance.PoolSystem.PlayInstanceAt(matchEffectPrefab, m_Grid.GetCellCenterWorld(gem.CurrentIndex));
+                                if (matchEffectPrefab == null) continue;
+                                Debug.Log($"Prefab type: {matchEffectPrefab.GetType().Name}");
+                                
+                                // Create instance without type specification
+                                var instance = Instantiate(matchEffectPrefab as UnityEngine.Object);
+                                GameObject effect = instance as GameObject;
+                                
+                                if (effect == null)
+                                {
+                                    Debug.LogError($"Could not cast to GameObject. Instance type: {instance.GetType().Name}");
+                                    Destroy(instance);
+                                    continue;
+                                }
+                                
+                                effect.transform.position = m_Grid.GetCellCenterWorld(gem.CurrentIndex);
+                                effect.transform.rotation = Quaternion.identity;
+                                
+                                // Destroy it after it finishes playing
+                                ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+                                if (ps != null)
+                                {
+                                    Destroy(effect, ps.main.duration + ps.main.startLifetime.constantMax);
+                                }
+                                else
+                                {
+                                    // Fallback if no ParticleSystem found
+                                    Destroy(effect, 2f);
+                                }
                             }
 
                             gem.gameObject.SetActive(false);
@@ -862,19 +892,39 @@ namespace Match3
                             gem.Destroyed();
                         }
                     }
-                    else if(gem.CurrentState != Gem.State.Disappearing)
-                    {
-                        LevelData.Instance.Matched(gem);
+                    // else if(gem.CurrentState != Gem.State.Disappearing)
+                    // {
+                    //     LevelData.Instance.Matched(gem);
                         
-                        foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
-                        {
-                            GameManager.Instance.PoolSystem.PlayInstanceAt(matchEffectPrefab, m_Grid.GetCellCenterWorld(gem.CurrentIndex));
-                        }
+                    //     // foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
+                    //     // {
+                    //     //     GameManager.Instance.PoolSystem.PlayInstanceAt(matchEffectPrefab, m_Grid.GetCellCenterWorld(gem.CurrentIndex));
+                    //     // }
+                    //     foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
+                    //     {
 
-                        gem.gameObject.SetActive(false);
+                    //         // Check if the prefab is null first
+                    //         if (matchEffectPrefab == null) continue;
+    
+                    //         // Instantiate the particle effect directly (not using pool for now)
+                    //         var effect = Instantiate(matchEffectPrefab, m_Grid.GetCellCenterWorld(gem.CurrentIndex), Quaternion.identity);
+                            
+                    //         // Destroy it after it finishes playing
+                    //         ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+                    //         if (ps != null)
+                    //         {
+                    //             Destroy(effect, ps.main.duration + ps.main.startLifetime.constantMax);
+                    //         }
+                    //         else
+                    //         {
+                    //             // Fallback if no ParticleSystem found
+                    //             Destroy(effect, 2f);
+                    //         }
+                    //     }
+                    //     gem.gameObject.SetActive(false);
 
-                        gem.Destroyed();
-                    }
+                    //     gem.Destroyed();
+                    // }
                 }
 
                 if (match.MatchingGem.Count == 0)
@@ -1043,13 +1093,13 @@ namespace Match3
             if (gemPrefab == null)
                 gemPrefab = ExistingGems[Random.Range(0, ExistingGems.Length)];
 
-            if (gemPrefab.MatchEffectPrefabs.Length != 0)
-            {
-                foreach (var matchEffectPrefab in gemPrefab.MatchEffectPrefabs)
-                {
-                    GameManager.Instance.PoolSystem.AddNewInstance(matchEffectPrefab, 16);
-                }
-            }
+            // if (gemPrefab.MatchEffectPrefabs.Length != 0)
+            // {
+            //     foreach (var matchEffectPrefab in gemPrefab.MatchEffectPrefabs)
+            //     {
+            //         GameManager.Instance.PoolSystem.AddNewInstance(matchEffectPrefab, 16);
+            //     }
+            // }
 
             //New Gem may be called after the board was init (as startup doesn't seem to be reliably called BEFORE init)
             if (CellContent[cell].ContainingGem != null)

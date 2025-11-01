@@ -17,9 +17,11 @@ namespace Match3
 
         private void Awake()
         {
-            m_CanMove = false;
-            m_Renderer = GetComponent<SpriteRenderer>();
-            m_HitPoints = Health;
+            // m_CanMove = false;
+            // m_Renderer = GetComponent<SpriteRenderer>();
+            // m_HitPoints = Health;
+            Destroy(gameObject); // This will destroy all crates immediately
+            return;
         }
 
         public override void Init(Vector3Int startIdx)

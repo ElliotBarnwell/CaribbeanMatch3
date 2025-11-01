@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace Match3
 {
@@ -20,7 +19,7 @@ namespace Match3
 
         public int GemType;
 
-        public VisualEffect[] MatchEffectPrefabs;
+        public GameObject[] MatchEffectPrefabs;
         public Animation[] MatchEffectAnimations;
         public Sprite UISprite;
         

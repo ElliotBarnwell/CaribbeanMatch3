@@ -123,6 +123,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &90632282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6220613138998175368, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_Name
+      value: BlueTileExp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877096585609991373, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,12 +2631,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnerPosition: []
   ExistingGems:
-  - {fileID: 3362941349602647026, guid: 5f45384de9bc44a7f8811bdd0884d46a, type: 3}
-  - {fileID: 1085009319964843950, guid: 87ad88debe28c4933a9cc3f67d65d002, type: 3}
-  - {fileID: 8828413451075435249, guid: dff9a9237b41f497f9d3e08ea03b9daa, type: 3}
-  - {fileID: 1301344701969516253, guid: a879ffec7faee49ebb651c272a9eeb36, type: 3}
-  - {fileID: 4827830047036087990, guid: e690aad5a48ad4360985d08175afc2b0, type: 3}
-  - {fileID: 7562414844314908195, guid: d101a9b6ac97547389f869477e9feb2c, type: 3}
+  - {fileID: 3362941349602647026, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
+  - {fileID: 1085009319964843950, guid: de6eb070c97e04f10a589861992da74c, type: 3}
+  - {fileID: 8828413451075435249, guid: c9b8688b2de974cff9ab667464d5bf05, type: 3}
+  - {fileID: 1301344701969516253, guid: 8e033f244b424413183ba9229a9aa3be, type: 3}
+  - {fileID: 4827830047036087990, guid: 3e39b31df044a4768be701dc5fbb1f54, type: 3}
+  - {fileID: 7562414844314908195, guid: ac4be74838aaf4751b5c6152bbce564e, type: 3}
   GemHoldPrefab: {fileID: 3377509351392185962, guid: 0e57c286bfbf10045b66afa053c4ad34, type: 3}
   HoldTrailPrefab: {fileID: 3411754766572351756, guid: 021bbf96a19906642a0e41fb58b29fc4, type: 3}
   m_StartClickPosition: {x: 0, y: 0, z: 0}
@@ -2629,7 +2688,7 @@ MonoBehaviour:
   MaxMove: 20
   LowMoveTrigger: 3
   Goals:
-  - Gem: {fileID: 7927807542344970777, guid: 04a81442ef4438841a0074ba8568d5d9, type: 3}
+  - Gem: {fileID: 3362941349602647026, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
     Count: 8
   - Gem: {fileID: 3930743957587144661, guid: f3e47e37930ff8f48b693da87b4025c7, type: 3}
     Count: 8
@@ -2639,7 +2698,7 @@ MonoBehaviour:
     Count: 8
   BorderMargin: 0.3
   Background: {fileID: 7645654448152055335}
-  Music: {fileID: 8300000, guid: 800028ab827bd554284b052dc022f8bb, type: 3}
+  Music: {fileID: 0}
 --- !u!1 &2086744281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,3 +3479,4 @@ SceneRoots:
   - {fileID: 527522672}
   - {fileID: 1409951469}
   - {fileID: 7645654448152055334}
+  - {fileID: 90632282}

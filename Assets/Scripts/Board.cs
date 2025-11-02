@@ -34,8 +34,8 @@ namespace Match3
 
         public Gem[] ExistingGems;
 
-        public VisualEffect GemHoldPrefab;
-        public VisualEffect HoldTrailPrefab;
+        // public VisualEffect GemHoldPrefab;
+        // public VisualEffect HoldTrailPrefab;
 
         public BoundsInt Bounds => m_BoundsInt;
         public Grid Grid => m_Grid;
@@ -83,8 +83,8 @@ namespace Match3
 
         private BonusItem m_ActivatedBonus;
 
-        private VisualEffect m_GemHoldVFXInstance;
-        private VisualEffect m_HoldTrailInstance;
+        // private VisualEffect m_GemHoldVFXInstance;
+        // private VisualEffect m_HoldTrailInstance;
 
         private AudioSource m_FallingSoundSource;
 
@@ -187,17 +187,17 @@ namespace Match3
         
             m_BoardWasInit = true;
 
-            if (GemHoldPrefab != null)
-            {
-                m_GemHoldVFXInstance = Instantiate(GemHoldPrefab);
-                m_GemHoldVFXInstance.gameObject.SetActive(false);
-            }
+            // if (GemHoldPrefab != null)
+            // {
+            //     m_GemHoldVFXInstance = Instantiate(GemHoldPrefab);
+            //     m_GemHoldVFXInstance.gameObject.SetActive(false);
+            // }
 
-            if (HoldTrailPrefab != null)
-            {
-                m_HoldTrailInstance = Instantiate(HoldTrailPrefab);
-                m_HoldTrailInstance.gameObject.SetActive(false);
-            }
+            // if (HoldTrailPrefab != null)
+            // {
+            //     m_HoldTrailInstance = Instantiate(HoldTrailPrefab);
+            //     m_HoldTrailInstance.gameObject.SetActive(false);
+            // }
 
             ToggleInput(false);
             //we wait couple of frames before fading in, as UI was just init yet so animation would not play
@@ -1370,10 +1370,10 @@ namespace Match3
             var worldPos = mainCam.ScreenToWorldPoint(clickPos);
             worldPos.z = 0;
             
-            if (m_HoldTrailInstance.gameObject.activeSelf)
-            {
-                m_HoldTrailInstance.transform.position = worldPos;
-            }
+            // if (m_HoldTrailInstance.gameObject.activeSelf)
+            // {
+            //     m_HoldTrailInstance.transform.position = worldPos;
+            // }
         
             if (pressedThisFrame)
             {
@@ -1417,24 +1417,24 @@ namespace Match3
 
                 if (CellContent.ContainsKey(startCell))
                 {
-                    if (m_GemHoldVFXInstance != null)
-                    {
-                        m_GemHoldVFXInstance.transform.position = m_Grid.GetCellCenterWorld(startCell);
-                        m_GemHoldVFXInstance.gameObject.SetActive(true);
-                    }
+                    // if (m_GemHoldVFXInstance != null)
+                    // {
+                    //     m_GemHoldVFXInstance.transform.position = m_Grid.GetCellCenterWorld(startCell);
+                    //     m_GemHoldVFXInstance.gameObject.SetActive(true);
+                    // }
 
-                    if (m_HoldTrailInstance)
-                    {
-                        m_HoldTrailInstance.transform.position = worldPos;
-                        m_HoldTrailInstance.gameObject.SetActive(true);
-                    }
+                    // if (m_HoldTrailInstance)
+                    // {
+                    //     m_HoldTrailInstance.transform.position = worldPos;
+                    //     m_HoldTrailInstance.gameObject.SetActive(true);
+                    // }
                 }
             }
             else if (releasedThisFrame)
             {
                 m_IsHoldingTouch = false;
-                if(m_GemHoldVFXInstance != null) m_GemHoldVFXInstance.gameObject.SetActive(false);
-                if(m_HoldTrailInstance != null) m_HoldTrailInstance.gameObject.SetActive(false);
+                // if(m_GemHoldVFXInstance != null) m_GemHoldVFXInstance.gameObject.SetActive(false);
+                // if(m_HoldTrailInstance != null) m_HoldTrailInstance.gameObject.SetActive(false);
                 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
                 if (UIHandler.Instance.DebugMenuOpen)

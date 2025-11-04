@@ -77,7 +77,7 @@ namespace Match3
         private bool m_SwipeQueued;
         private Vector3Int m_StartSwipe;
         private Vector3Int m_EndSwipe;
-        private bool m_IsHoldingTouch;
+        //private bool m_IsHoldingTouch;
 
         private float m_LastClickTime = 0.0f;
 
@@ -851,10 +851,6 @@ namespace Match3
                         {
                             LevelData.Instance.Matched(gem);
 
-                            if (gem.MatchEffectPrefabs != null && gem.MatchEffectPrefabs.Length > 0)
-                            {
-                                Debug.Log($"Gem: {gem.name}, Array type: {gem.MatchEffectPrefabs.GetType()}, First element type: {gem.MatchEffectPrefabs[0]?.GetType().Name ?? "null"} matcheffectname: {gem.MatchEffectPrefabs[0]?.name ?? "null"}" );
-                            }
                             foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
                             {
                                 Debug.Log($"Prefab type: {matchEffectPrefab.GetType().Name}");
@@ -1433,7 +1429,7 @@ namespace Match3
             }
             else if (releasedThisFrame)
             {
-                m_IsHoldingTouch = false;
+                //m_IsHoldingTouch = false;
                 // if(m_GemHoldVFXInstance != null) m_GemHoldVFXInstance.gameObject.SetActive(false);
                 // if(m_HoldTrailInstance != null) m_HoldTrailInstance.gameObject.SetActive(false);
                 

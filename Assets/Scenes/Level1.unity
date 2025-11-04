@@ -2628,13 +2628,13 @@ MonoBehaviour:
   LowMoveTrigger: 3
   Goals:
   - Gem: {fileID: 3362941349602647026, guid: 71042eabdfd96411abf2f265b821a8c7, type: 3}
-    Count: 10
+    Count: 8
   - Gem: {fileID: 3930743957587144661, guid: f3e47e37930ff8f48b693da87b4025c7, type: 3}
-    Count: 10
+    Count: 8
   - Gem: {fileID: 7927807542344970777, guid: bb60bc505e820734584f3d8bd0a16f53, type: 3}
-    Count: 10
+    Count: 8
   - Gem: {fileID: 7927807542344970777, guid: 3d45c7a5c1a18ce408b15ad7a814f987, type: 3}
-    Count: 10
+    Count: 8
   BorderMargin: 0.3
   Background: {fileID: 7645654448152055335}
   Music: {fileID: 0}

@@ -831,12 +831,12 @@ namespace Match3
 
                         match.DeletedCount += 1;
                         //we only spawn coins for non bonus match
-                        if (match.DeletedCount >= 4 && !match.ForcedDeletion)
-                        {
-                            GameManager.Instance.ChangeCoins(1);
-                            GameManager.Instance.PoolSystem.PlayInstanceAt(GameManager.Instance.Settings.VisualSettings.CoinVFX,
-                                gem.transform.position);
-                        }
+                        // if (match.DeletedCount >= 4 && !match.ForcedDeletion)
+                        // {
+                        //     GameManager.Instance.ChangeCoins(1);
+                        //     GameManager.Instance.PoolSystem.PlayInstanceAt(GameManager.Instance.Settings.VisualSettings.CoinVFX,
+                        //         gem.transform.position);
+                        // }
                     
                         if (match.SpawnedBonus != null && match.OriginPoint == gemIdx)
                         {
@@ -853,12 +853,13 @@ namespace Match3
 
                             if (gem.MatchEffectPrefabs != null && gem.MatchEffectPrefabs.Length > 0)
                             {
-                                Debug.Log($"Gem: {gem.name}, Array type: {gem.MatchEffectPrefabs.GetType()}, First element type: {gem.MatchEffectPrefabs[0]?.GetType().Name ?? "null"}");
+                                Debug.Log($"Gem: {gem.name}, Array type: {gem.MatchEffectPrefabs.GetType()}, First element type: {gem.MatchEffectPrefabs[0]?.GetType().Name ?? "null"} matcheffectname: {gem.MatchEffectPrefabs[0]?.name ?? "null"}" );
                             }
                             foreach (var matchEffectPrefab in gem.MatchEffectPrefabs)
                             {
-                                if (matchEffectPrefab == null) continue;
                                 Debug.Log($"Prefab type: {matchEffectPrefab.GetType().Name}");
+                                if (matchEffectPrefab == null) continue;
+                               
                                 
                                 // Create instance without type specification
                                 var instance = Instantiate(matchEffectPrefab as UnityEngine.Object);
